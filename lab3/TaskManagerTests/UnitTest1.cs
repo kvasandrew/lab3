@@ -6,12 +6,12 @@ namespace TaskManagerTests
     public class Tests
     {
 
-        [TestCase("Noname","Low")]
+        [TestCase("Noname", "Low")]
         public void AddTaskPriority_ShouldAddPriority(string task, string priority)
         {
             // arrange
             var taskManager = new TaskManagement();
-            var Testtask = new Lab3TaskManager.Task(task,"Nothing",null,false);
+            var Testtask = new Lab3TaskManager.Task(task, "Nothing", null, false);
             taskManager.AddTask(Testtask);
             // act
             taskManager.AddTaskPriority(task, priority);
@@ -91,7 +91,7 @@ namespace TaskManagerTests
         {
             // arrange
             var taskManager = new TaskManagement();
-            var task = new Lab3TaskManager.Task(null," ","Low",false);
+            var task = new Lab3TaskManager.Task(null, " ", "Low", false);
 
             //act and assert
             Assert.Throws<InvalidOperationException>(() => taskManager.AddTask(task));
@@ -132,5 +132,105 @@ namespace TaskManagerTests
             //act and assert
             Assert.Throws<InvalidOperationException>(() => taskManager.RemoveTask(tasktitle));
         }
+
+
+        [Test]
+        public void AddTaskToFavorite_ShouldAddTaskToFavorite()
+        {
+            // arrange
+            var taskManager = new TaskManagement();
+            var task = new Lab3TaskManager.Task();
+            taskManager.AddTask(task);
+
+            //act
+            taskManager.AddTaskToFavorite(task.Title);
+
+            //assert
+            Assert.IsTrue(taskManager.Tasks.First(x => x.Title == task.Title).Favorite == true);
+        }
+
+        [TestCase("Test")]
+        public void AddTaskToFavorite_TryAddToFavoriteNotExistedTask_ShouldThrowInvalidOperationException(string taskTitle)
+        {
+            // arrange
+            var taskManager = new TaskManagement();
+
+            //act and assert
+            Assert.Throws<InvalidOperationException>(() => taskManager.AddTaskToFavorite(taskTitle));
+        }
+        [Test]
+        public void RemoveTaskFromFavorite_ShouldRemoveTaskFromFavorite()
+        {
+            // arrange
+            var taskManager = new TaskManagement();
+            var task = new Lab3TaskManager.Task("Test", "Test", "Low", false);
+            taskManager.AddTask(task);
+            taskManager.AddTaskToFavorite(task.Title);
+
+            //act
+            taskManager.RemoveTaskFromFavorite(task.Title);
+
+            //assert
+            Assert.IsTrue(taskManager.Tasks.First(x => x.Title == task.Title).Favorite == false);
+        }
+
+        [TestCase("Test")]
+        public void RemoveTaskFromFavorite_TryRemoveFromFavoriteNotExistedTask_ShouldThrowInvalidOperationException(string taskTitle)
+        {
+            // arrange
+            var taskManager = new TaskManagement();
+
+            //act and assert
+            Assert.Throws<InvalidOperationException>(() => taskManager.RemoveTaskFromFavorite(taskTitle));
+        }
+
+        [Test]
+        public void GetFavoriteTasks_ShouldGetFavoriteTasks()
+        {
+            //arrange
+            var taskManager = new TaskManagement();
+            List<Lab3TaskManager.Task> test = new List<Lab3TaskManager.Task> {
+                new Lab3TaskManager.Task("Test1","Test1","Low",true),
+                new Lab3TaskManager.Task("Test2", "Test2", "Low", true)};
+
+            taskManager.AddTask(test[0]);
+            taskManager.AddTask(test[1]);
+
+            //act
+            var res = taskManager.GetFavoriteTasks();
+
+            //assert
+            Assert.IsTrue(res.SequenceEqual(test));
+        }
+
+        [TestCase("Low")]
+        public void GetTasksByPriority_ShouldGetTasksByPriority(string priority)
+        {
+            //arrange
+            var taskManager = new TaskManagement();
+            List<Lab3TaskManager.Task> test = new List<Lab3TaskManager.Task> {
+                new Lab3TaskManager.Task("Test1","Test1","Low",true),
+                new Lab3TaskManager.Task("Test2", "Test2", "Low", true)};
+
+            taskManager.AddTask(test[0]);
+            taskManager.AddTask(test[1]);
+
+            //act
+            var res = taskManager.GetTasksByPriority(priority);
+
+            //assert
+            Assert.IsTrue(res.SequenceEqual(test));
+        }
+
+        [TestCase("Test")]
+        public void GetTasksByPriority_TryGetTasksByWrongPriority_ShouldThrowInvalidOperationException(string priority)
+        {
+            //arrange
+            var taskManager = new TaskManagement();
+
+            //act and assert
+            Assert.Throws<InvalidOperationException>(() => taskManager.GetTasksByPriority(priority));
+        }
+
     }
 }
