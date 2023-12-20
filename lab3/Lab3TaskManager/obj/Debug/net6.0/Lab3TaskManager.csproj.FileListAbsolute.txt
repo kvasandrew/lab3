@@ -12,14 +12,3 @@ C:\Users\kvasa\source\repos\Lab3TaskManager\Lab3TaskManager\obj\Debug\net6.0\ref
 C:\Users\kvasa\source\repos\Lab3TaskManager\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.pdb
 C:\Users\kvasa\source\repos\Lab3TaskManager\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.genruntimeconfig.cache
 C:\Users\kvasa\source\repos\Lab3TaskManager\Lab3TaskManager\obj\Debug\net6.0\ref\Lab3TaskManager.dll
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.GeneratedMSBuildEditorConfig.editorconfig
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.AssemblyInfoInputs.cache
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.AssemblyInfo.cs
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.csproj.CoreCompileInputs.cache
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.dll
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\refint\Lab3TaskManager.dll
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\Lab3TaskManager.pdb
-D:\TA-13\lab3\Lab3TaskManager\bin\Debug\net6.0\Lab3TaskManager.deps.json
-D:\TA-13\lab3\Lab3TaskManager\bin\Debug\net6.0\Lab3TaskManager.dll
-D:\TA-13\lab3\Lab3TaskManager\bin\Debug\net6.0\Lab3TaskManager.pdb
-D:\TA-13\lab3\Lab3TaskManager\obj\Debug\net6.0\ref\Lab3TaskManager.dll

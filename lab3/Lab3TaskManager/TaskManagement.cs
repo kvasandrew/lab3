@@ -30,14 +30,16 @@ namespace Lab3TaskManager
             if (string.IsNullOrWhiteSpace(task.Title) || string.IsNullOrWhiteSpace(task.Description) || !CheckPriority(task.Priority)) return false; return true;
         }
         private bool TaskExist(string title){return Tasks.Where(x => x.Title == title).Any();}
+       
 
-        public void AddTaskPriority(string task, string priority)
+
+        public void AddTaskPriority(string task, string priority) 
         {
-            if (!TaskExist(task))
+            if(!TaskExist(task))
                 throw new InvalidOperationException($"Task {task} doesn`t exist. ");
             if (!CheckPriority(priority))
                 throw new InvalidOperationException($"Wrong Priority {priority} for Task {task}. ");
-
+                
             Tasks.First(x => x.Title == task).Priority = priority;
         }
         public void RemoveTaskPriority(string task)
@@ -46,7 +48,7 @@ namespace Lab3TaskManager
                 throw new InvalidOperationException($"Task {task} doesn`t exist. ");
             Tasks.First(x => x.Title == task).Priority = null;
         }
-        public void AddTask(Task task)
+        public void AddTask (Task task)
         {
             if (!IsValid(task))
                 throw new InvalidOperationException("Task isn`t valid. ");
@@ -78,7 +80,7 @@ namespace Lab3TaskManager
         {
             return Tasks.Where(x => x.Favorite == true).OrderBy(x => x.Title).ToList();
         }
-
+        
         public List<Task> GetTasksByPriority(string priority)
         {
             if (!CheckPriority(priority))
@@ -86,6 +88,5 @@ namespace Lab3TaskManager
 
             return Tasks.Where(x => x.Priority == priority).OrderBy(x => x.Title).ToList();
         }
-
     }
 }
